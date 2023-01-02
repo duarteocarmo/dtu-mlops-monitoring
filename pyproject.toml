@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "predictor"
+version = "22.12.9"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.88.0",
+    "uvicorn>=0.20.0",
+    "opentelemetry-distro>=0.36b0",
+    "opentelemetry-exporter-otlp-proto-http>=1.15.0",
+    "opentelemetry-instrumentation-fastapi>=0.36b0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=22.10.0",
+    "flake8>=5.0.4",
+    "isort>=5.10.1",
+    "pip-tools>=6.10.0",
+    "pytest>=7.2.0",
+    "pandas-stubs>=1.5.1.221024",
+    "watchdog>=2.1.9",
+    "pytest>=7.2.0",
+]
+
