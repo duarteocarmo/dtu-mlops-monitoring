@@ -28,6 +28,8 @@ idna==3.4
     # via
     #   anyio
     #   requests
+loguru==0.6.0
+    # via predictor (pyproject.toml)
 opentelemetry-api==1.15.0
     # via
     #   opentelemetry-distro

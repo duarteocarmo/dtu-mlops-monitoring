@@ -1,5 +1,6 @@
 import hashlib
 import random
+from loguru import logger
 
 import fastapi
 from fastapi.responses import RedirectResponse
@@ -34,20 +35,19 @@ async def root():
 def predict(features: RequestModel):
     # get the current span
     current_span = trace.get_current_span()
+    logger.info("Received request")
 
-    # hash input
-    input_hash = hashlib.md5(features.message.encode("utf-8")).hexdigest()
-
-    # save hash to opentelemetry
-    current_span.set_attribute(
-        "app.demo.input_hash", input_hash
-    )  # <- Saves attribute
-
-    # return predictions
-
+    # make predictions
     label = random.choice(["happy", "sad"])
     label_probability = random.random()
+    logger.info("Made prediction")
+
+    # save some features to opentelemetry
+    current_span.set_attribute("message", features.message)  # <- Saves attribute
+    current_span.set_attribute("label_probability", label_probability)
+    current_span.set_attribute("label", label)
 
     response = ResponseModel(label=label, label_probability=label_probability)
+    logger.info("Built response")
 
     return response

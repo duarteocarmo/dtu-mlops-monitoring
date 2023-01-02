@@ -1,21 +1,18 @@
-FROM python:3.9
+FROM python:3.10
 
-COPY requirements.txt /tmp/
-RUN pip install --upgrade pip 
-RUN pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
-RUN pip install -r /tmp/requirements.txt
-
-RUN mkdir -p /src
 COPY src/ /src/
-RUN pip install -e /src
+COPY README.md README.md
+COPY requirements.txt requirements.txt
+COPY pyproject.toml pyproject.toml
+COPY Makefile Makefile
 
-# Honeycomb
-ENV OTEL_EXPORTER_OTLP_ENDPOINT="https://api.honeycomb.io"
-ENV OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team=cFqh5eb7eCvjzViKhPpRcF"
-ENV OTEL_SERVICE_NAME="email-data-extraction"
+ENV OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/"
+ENV OTEL_SERVICE_NAME="mlops-demo"
 
 WORKDIR /
 
+RUN make install
+
 EXPOSE 80
 
-CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "80"]
+ENTRYPOINT ["python", "-m", "uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "80"]

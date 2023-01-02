@@ -48,7 +48,7 @@ check:
 
 ## Run api
 api:
-	python -m uvicorn src.api.main:app --reload
+	OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/" OTEL_SERVICE_NAME="mlops-demo" python -m uvicorn src.api.main:app --reload
 
 #################################################################################
 # Self Documenting Commands                                                     #
