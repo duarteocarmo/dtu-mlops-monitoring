@@ -1,4 +1,4 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Danmarks_Tekniske_Universitet_%28logo%29.svg/1413px-Danmarks_Tekniske_Universitet_%28logo%29.svg.png" width=220  align="right">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Danmarks_Tekniske_Universitet_%28logo%29.svg/1413px-Danmarks_Tekniske_Universitet_%28logo%29.svg.png" width=100  align="right">
 
 # OpenTelemetry FastAPI demo
 
