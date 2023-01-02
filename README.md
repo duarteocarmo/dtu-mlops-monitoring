@@ -1,4 +1,4 @@
-<img src="http://www.claircity.eu/wp-content/uploads/2019/08/technical-university-of-denmark-dtu-19-logo.png" width=220  align="right">
+<img src="https://designguide.dtu.dk/-/media/subsites/designguide/design-basics/logo/dtu_logo_hvid.jpg" width=220  align="right">
 
 # OpenTelemetry FastAPI demo
 
